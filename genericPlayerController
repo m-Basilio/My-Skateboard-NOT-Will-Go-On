@@ -1,0 +1,21 @@
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    public float speed = 5f; // Velocidade de movimento
+
+    private void Update() // Tudo que está dentro deste método é executado 1 vez a cada frame do jogo. Não é bom colocar tudo aqui, pois pode prejudicar o desempenho.
+    {
+        Move(); //Chamando o método de movimento no Update contínuo do jogo.
+    }
+
+    private void Move() // Por ser um jogo simples e apenas um teste, optei por utilizar o sistema antigo de Input da Unity Engine.
+    {
+        float horizontalInput = Input.GetAxis("Horizontal"); // Aqui captamos o Input de movimento
+        float verticalInput = Input.GetAxis("Vertical");
+
+        // Movimento livre na pista
+        transform.Translate(new Vector2(horizontalInput, verticalInput) * speed * Time.deltaTime); // Aqui executamos o movimento de acordo com a resposta dos controles multiplicados pela velocidade e tempo.
+                                            // Caso não executássemos o código em função do tempo, o jogador ficaria SUPER RÁPIDO, pois o código seria executado por framos, e não por segundos.
+    }
+}
