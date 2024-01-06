@@ -1,0 +1,29 @@
+using UnityEngine;
+
+public class ObstacleController : MonoBehaviour
+{
+    public float obstacleSpeed = 5f;
+
+    private void Start()
+    {
+        // Inicia o movimento do obstáculo
+        Move();
+    }
+
+    private void Move()
+    {
+        transform.Translate(Vector2.left * obstacleSpeed * Time.deltaTime); // Aqui temos um script de movimento diferente do personagem. Note que não há uma condição e não utilizamos o recurso "Rigidbody2D".
+
+        if (transform.position.x < -10f)
+        {
+            // Reposiciona o obstáculo ao final da linha de spawn
+            Reposition();
+        }
+    }
+
+    private void Reposition()
+    {
+        float randomY = Random.Range(-3f, 3f); // Ajuste conforme necessário. Aqui temos um script que fará o objeto voltar para uma posição aleatória no eixo Y
+        transform.position = new Vector2(-10f, randomY); //Aqui transportamos o objeto para a posição -10 no eixo X, onde o personagem se move, ao mesmo tempo que no eixo Y aplicamos a variável declarada acima para darmos uma posição aleatória no eixo Y.
+    }
+}
