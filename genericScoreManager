@@ -1,0 +1,32 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ScoreManager : MonoBehaviour
+{
+    public Text scoreText; // Referência ao objeto de texto que exibirá a pontuação
+    private float score = 0f;
+
+    private void Start()
+    {
+        // Inicia o aumento da pontuação
+        InvokeRepeating("IncreaseScore", 1f, 1f); // Inicia após 1 segundo e repete a cada 1 segundo
+    }
+
+    private void Update()
+    {
+        // Atualiza o texto de pontuação na tela
+        UpdateScoreText();
+    }
+
+    private void IncreaseScore()
+    {
+        // Aumenta a pontuação com base no tempo
+        score += 1f;
+    }
+
+    private void UpdateScoreText()
+    {
+        // Atualiza o texto de pontuação na tela
+        scoreText.text = "Pontuação: " + Mathf.Round(score).ToString();
+    }
+}
