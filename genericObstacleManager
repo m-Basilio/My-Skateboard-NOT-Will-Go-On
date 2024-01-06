@@ -1,0 +1,26 @@
+using UnityEngine;
+
+public class ObstacleManager : MonoBehaviour
+{
+    public GameObject obstaclePrefab;
+    public float spawnInterval = 2f; // Intervalo de spawn em segundos
+    public float spawnRangeY = 3f; // Variação de altura para o spawn
+
+    private void Start()
+    {
+        // Inicia a rotina de spawn de obstáculos
+        InvokeRepeating("SpawnObstacle", 0f, spawnInterval);
+    }
+
+    private void SpawnObstacle()
+    {
+        // Determina a posição de spawn aleatória no eixo Y
+        float randomY = Random.Range(-spawnRangeY, spawnRangeY);
+
+        // Instancia o obstáculo na posição de spawn
+        GameObject obstacle = Instantiate(obstaclePrefab, new Vector2(transform.position.x, randomY), Quaternion.identity);
+
+        // Define o objeto de spawn como pai do obstáculo (organização na hierarquia)
+        obstacle.transform.parent = transform;
+    }
+}
