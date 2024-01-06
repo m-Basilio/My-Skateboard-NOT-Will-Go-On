@@ -10,11 +10,12 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Move() // Por ser um jogo simples e apenas um teste, optei por utilizar o sistema antigo de Input da Unity Engine.
-    { // Aqui captamos o Input de movimento
+    {
+        float horizontalInput = Input.GetAxis("Horizontal"); // Aqui captamos o Input de movimento
         float verticalInput = Input.GetAxis("Vertical");
 
         // Movimento livre na pista
-        transform.Translate(new Vector2(1f, verticalInput) * speed * Time.deltaTime); // Aqui executamos o movimento de acordo com a resposta dos controles multiplicados pela velocidade e tempo.
+        transform.Translate(new Vector2(horizontalInput, verticalInput) * speed * Time.deltaTime); // Aqui executamos o movimento de acordo com a resposta dos controles multiplicados pela velocidade e tempo.
                                             // Caso não executássemos o código em função do tempo, o jogador ficaria SUPER RÁPIDO, pois o código seria executado por framos, e não por segundos.
     }
 }
