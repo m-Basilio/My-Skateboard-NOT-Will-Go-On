@@ -10,8 +10,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Move() // Por ser um jogo simples e apenas um teste, optei por utilizar o sistema antigo de Input da Unity Engine.
-    {
-        float horizontalInput = Input.GetAxis("Horizontal"); // Aqui captamos o Input de movimento
+    { // Aqui captamos o Input de movimento
         float verticalInput = Input.GetAxis("Vertical");
 
         // Movimento livre na pista
