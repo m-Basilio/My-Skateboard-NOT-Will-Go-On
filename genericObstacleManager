@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
 {
-    public GameObject obstaclePrefab;
+    public GameObject[] obstaclePrefab; // Esses colchetes transformam a variável em um array do tipo GameObject. Isto significa que essa variável agora representa uma coletânea de objetos do mesmo tipo.
     public float spawnInterval = 2f; // Intervalo de spawn em segundos
     public float spawnRangeY = 3f; // Variação de altura para o spawn
 
@@ -18,7 +20,8 @@ public class ObstacleManager : MonoBehaviour
         float randomY = Random.Range(-spawnRangeY, spawnRangeY);
 
         // Instancia o obstáculo na posição de spawn
-        GameObject obstacle = Instantiate(obstaclePrefab, new Vector2(transform.position.x, randomY), Quaternion.identity);
+        GameObject obstacle = Instantiate(obstaclePrefab[Random.RandomRange(0, obstaclePrefab.Length)], new Vector2(transform.position.x, randomY), Quaternion.identity);
+                                            //Aqui fiz uma pequena alteração para que os obstáculos sejam selecionados aleatoriamente de acordo com o tamanho do nosso array
 
         // Define o objeto de spawn como pai do obstáculo (organização na hierarquia)
         obstacle.transform.parent = transform;
