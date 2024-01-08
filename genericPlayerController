@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public float speed = 5f; // Velocidade de movimento
     public Rigidbody2D playerrb;
+    public GameObject canvas;
 
     private void Update() // Tudo que está dentro deste método é executado 1 vez a cada frame do jogo. Não é bom colocar tudo aqui, pois pode prejudicar o desempenho.
     {
@@ -20,5 +22,13 @@ public class Player : MonoBehaviour
         // Movimento livre na pista
         playerrb.velocity = new Vector2(speed * horizontalInput, playerrb.velocity.y);// Aqui executamos o movimento de acordo com a resposta dos controles multiplicados pela velocidade e tempo.
         playerrb.velocity = new Vector2(playerrb.velocity.x, speed * verticalInput);                                                                                   // Caso não executássemos o código em função do tempo, o jogador ficaria SUPER RÁPIDO, pois o código seria executado por framos, e não por segundos.
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "morte")
+        {
+            canvas.SetActive(true); // Ativa o gameobject Canvas, que é onde iremos reiniciar a cena.
+            Time.timeScale = 0; // pausa o jogo quando você morre.
+        }
     }
 }
