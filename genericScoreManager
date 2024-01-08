@@ -1,9 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
-public class ScoreManager : MonoBehaviour
+public class scoreManager : MonoBehaviour
 {
-    public Text scoreText; // Referência ao objeto de texto que exibirá a pontuação
+    public TextMeshProUGUI scoreText; // Referência ao objeto de texto que exibirá a pontuação
     private float score = 0f;
 
     private void Start()
@@ -27,6 +29,6 @@ public class ScoreManager : MonoBehaviour
     private void UpdateScoreText()
     {
         // Atualiza o texto de pontuação na tela
-        scoreText.text = "Pontuação: " + Mathf.Round(score).ToString();
+        scoreText.text = "Score " + Mathf.Round(score).ToString();
     }
 }
