@@ -4,7 +4,7 @@ public class ObstacleController : MonoBehaviour
 {
     public float obstacleSpeed = 5f;
 
-    private void Start()
+    private void Update()
     {
         // Inicia o movimento do obstáculo
         Move();
