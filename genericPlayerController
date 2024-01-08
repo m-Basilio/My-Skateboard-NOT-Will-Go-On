@@ -31,4 +31,8 @@ public class Player : MonoBehaviour
             Time.timeScale = 0; // pausa o jogo quando você morre.
         }
     }
+    public void reiniciar()
+    {
+        SceneManager.LoadScene(0); // reinicia o jogo, obviamente, mas este código serve para carregar uma cena através de seu número no índice de build seja em qualquer contexto
+    }
 }
